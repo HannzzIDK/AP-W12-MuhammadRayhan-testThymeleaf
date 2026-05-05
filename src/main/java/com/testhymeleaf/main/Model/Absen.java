@@ -4,32 +4,29 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+import jakarta.persistence.Table;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "Absen")
 public class Absen {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Integer id; // primary key dari tabel absen
+    private Integer id;
     private String nama;
     private String nim;
-    private String kelas;
-    private String status; // status absen
+    private Boolean status;
 
     public Absen() {
     }
 
-    public Absen(Integer id, String nama, String nim, String kelas, String status) {
+    public Absen(Integer id, String nama, String nim, Boolean status) {
         this.id = id;
         this.nama = nama;
         this.nim = nim;
-        this.kelas = kelas;
         this.status = status;
     }
 
+    // getters and setters
     public Integer getId() {
         return id;
     }
@@ -54,20 +51,11 @@ public class Absen {
         this.nim = nim;
     }
 
-    public String getKelas() {
-        return kelas;
-    }
-
-    public void setKelas(String kelas) {
-        this.kelas = kelas;
-    }
-
-    public String getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
-
 }
